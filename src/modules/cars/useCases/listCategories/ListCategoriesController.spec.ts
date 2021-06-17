@@ -8,7 +8,6 @@ import { app } from '@shared/infra/http/app';
 import createConnection from '@shared/infra/typeorm';
 
 let connection: Connection;
-
 describe('List Category Controller', () => {
   beforeAll(async () => {
     connection = await createConnection();
@@ -40,8 +39,8 @@ describe('List Category Controller', () => {
     await request(app)
       .post('/categories')
       .send({
-        name: 'Name_Supertest',
-        description: 'Category_Supertest',
+        name: 'Category Supertest',
+        description: 'Category Supertest',
       })
       .set({
         Authorization: `Bearer ${token}`,
@@ -52,6 +51,6 @@ describe('List Category Controller', () => {
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);
     expect(response.body[0]).toHaveProperty('id');
-    expect(response.body[0].name).toEqual('Name_Supertest');
+    expect(response.body[0].name).toEqual('Category Supertest');
   });
 });

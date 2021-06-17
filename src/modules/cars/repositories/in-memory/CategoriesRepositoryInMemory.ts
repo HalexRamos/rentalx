@@ -5,7 +5,7 @@ import {
 } from '@modules/cars/repositories/ICategoriesRepository';
 
 class CategoriesRepositoryInMemory implements ICategoriesRepository {
-  categories: Category[] = [];
+  private categories: Category[] = [];
 
   async findByName(name: string): Promise<Category> {
     const category = this.categories.find(category => category.name === name);
@@ -13,8 +13,7 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
   }
 
   async list(): Promise<Category[]> {
-    const all = this.categories;
-    return all;
+    return this.categories;
   }
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {

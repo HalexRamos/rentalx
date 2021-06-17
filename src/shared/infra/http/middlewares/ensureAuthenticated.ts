@@ -27,7 +27,7 @@ export async function ensureAuthenticated(
     ) as IPayload;
 
     const usersRepository = new UsersRepository();
-    usersRepository.findById(user_id);
+    await usersRepository.findById(user_id);
 
     request.user = {
       id: user_id,
