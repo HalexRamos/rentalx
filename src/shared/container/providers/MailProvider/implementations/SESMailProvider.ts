@@ -8,6 +8,7 @@ import { IMailProvider } from '../IMailProvider';
 @injectable()
 class SESMailProvider implements IMailProvider {
   private client: Transporter;
+
   constructor() {
     this.client = nodemailer.createTransport({
       SES: new SES({
